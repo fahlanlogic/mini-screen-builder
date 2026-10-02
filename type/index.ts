@@ -1,0 +1,34 @@
+export type BaseElement = {
+  id: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  zIndex: number;
+};
+
+export type TextElement = BaseElement & {
+  type: "text";
+  text: string;
+  color: string;
+  fontSize: number;
+};
+
+export type ImageElement = BaseElement & {
+  type: "image";
+  imageUrl: string;
+};
+
+export type ButtonElement = BaseElement & {
+  type: "button";
+  label: string;
+  actionId: string; // misal "next-page"
+};
+
+export type CanvasElement = TextElement | ImageElement | ButtonElement;
+
+export type Screen = {
+  width: number;
+  height: number;
+  elements: CanvasElement[];
+};
