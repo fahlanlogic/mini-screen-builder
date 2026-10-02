@@ -13,22 +13,21 @@ import { Button } from "../ui/button";
 import { IconPlus } from "@tabler/icons-react";
 import { Field, FieldGroup, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
+import { useEditor } from "@/store/screen";
 
 function DialogCanvas() {
   const [isOpen, setOpen] = React.useState<boolean>(false);
   const [width, setWidth] = React.useState<number>(1920);
   const [height, setHeight] = React.useState<number>(1080);
+  const createScreen = useEditor((state) => state.createScreen);
 
   const valid =
     width >= 100 && width <= 5000 && height >= 100 && height <= 5000;
-  // function onSubmit(e: React.SubmitEvent<HTMLFormElement>) {
-  //   e.preventDefault();
-  //   const data = new FormData(e.currentTarget);
-  //   // data.get("title"), data.get("framework"), data.get("image")
-  //   console.log(Object.fromEntries(data));
-  //   setOpen(false);
-  //   // fetch("/api/...", { method: "POST", body: data })
-  // }
+
+  const onCreate = () => {
+    createScreen(width, height);
+    setOpen(false);
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={setOpen}>
@@ -82,7 +81,7 @@ function DialogCanvas() {
             >
               Cancel
             </Button>
-            <Button type="button" disabled={!valid}>
+            <Button type="button" disabled={!valid} onClick={onCreate}>
               Create
             </Button>
           </div>
