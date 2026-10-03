@@ -8,9 +8,13 @@ function Editor({ screen }: { screen: Screen }) {
   const { ref, scale } = useFitScale(screen.width, screen.height);
 
   return (
-    <div ref={ref} className="flex-1 overflow-hidden">
+    <div
+      ref={ref}
+      className="flex flex-1 items-center justify-center overflow-hidden px-30"
+    >
       <div
         style={{ width: screen.width * scale, height: screen.height * scale }}
+        className="box-content shrink-0 overflow-hidden rounded-md border bg-muted shadow-2xl"
       >
         <div
           style={{
