@@ -22,7 +22,7 @@ export type ImageElement = BaseElement & {
 export type ButtonElement = BaseElement & {
   type: "button";
   label: string;
-  actionId: string; // misal "next-page"
+  actionId: string;
 };
 
 export type CanvasElement = TextElement | ImageElement | ButtonElement;
