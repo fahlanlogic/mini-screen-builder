@@ -6,6 +6,7 @@ import CanvasItem from "./blocks/canvas-item";
 import Toolbar from "./blocks/toolbar";
 import { useEditor } from "@/store/screen";
 import Sidebar from "./blocks/sidebar";
+import PublishButton from "./blocks/publish-button";
 
 function Editor({ screen }: { screen: Screen }) {
   const { ref, scale } = useFitScale(screen.width, screen.height);
@@ -22,6 +23,7 @@ function Editor({ screen }: { screen: Screen }) {
     >
       <Toolbar />
       <Sidebar />
+      <PublishButton />
       <div ref={ref} className="overflow-hidden pl-48 pr-12">
         <div
           style={{ width: screen.width * scale, height: screen.height * scale }}
