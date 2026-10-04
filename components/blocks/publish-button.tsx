@@ -16,6 +16,9 @@ function PublishButton() {
     try {
       await api.saveDraft(screen.id, screen.elements); // simpan draft terbaru
       const { version } = await api.publish(screen.id);
+      useEditor.setState((s) =>
+        s.screen ? { screen: { ...s.screen, publishedVersion: version } } : s,
+      );
       alert(`Berhasil dipublish (versi ${version})`);
     } catch (e) {
       alert((e as Error).message);
@@ -25,14 +28,17 @@ function PublishButton() {
   };
 
   return (
-    <Button
-      data-keep-selection
-      className="absolute right-6 top-2 z-10"
-      disabled={loading}
-      onClick={handlePublish}
-    >
-      {loading ? "Publishing..." : "Publish"}
-    </Button>
+    <div className="absolute right-6 top-2 z-50">
+      <span className="mr-4">Version: {screen.publishedVersion}</span>
+      <Button
+        data-keep-selection
+        className=""
+        disabled={loading}
+        onClick={handlePublish}
+      >
+        {loading ? "Publishing..." : "Publish"}
+      </Button>
+    </div>
   );
 }
 

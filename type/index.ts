@@ -34,5 +34,6 @@ export type Screen = {
   id: string;
   width: number;
   height: number;
+  publishedVersion?: number;
   elements: CanvasElement[];
 };
