@@ -26,10 +26,6 @@ function DialogCanvas() {
   const valid =
     width >= 100 && width <= 5000 && height >= 100 && height <= 5000;
 
-  // const onCreate = () => {
-  //   createScreen(width, height);
-  //   setOpen(false);
-  // };
   const handleCreate = async () => {
     setLoading(true);
     try {
