@@ -14,9 +14,11 @@ import { IconPlus } from "@tabler/icons-react";
 import { Field, FieldGroup, FieldLabel } from "../ui/field";
 import { Input } from "../ui/input";
 import { useEditor } from "@/store/screen";
+import { api } from "@/lib/api";
 
 function DialogCanvas() {
   const [isOpen, setOpen] = React.useState<boolean>(false);
+  const [loading, setLoading] = React.useState<boolean>(false);
   const [width, setWidth] = React.useState<number>(1920);
   const [height, setHeight] = React.useState<number>(1080);
   const createScreen = useEditor((state) => state.createScreen);
@@ -24,9 +26,21 @@ function DialogCanvas() {
   const valid =
     width >= 100 && width <= 5000 && height >= 100 && height <= 5000;
 
-  const onCreate = () => {
-    createScreen(width, height);
-    setOpen(false);
+  // const onCreate = () => {
+  //   createScreen(width, height);
+  //   setOpen(false);
+  // };
+  const handleCreate = async () => {
+    setLoading(true);
+    try {
+      const screen = await api.createScreen(width, height);
+      createScreen(screen);
+    } catch (e) {
+      alert((e as Error).message);
+    } finally {
+      setLoading(false);
+      setOpen(false);
+    }
   };
 
   return (
@@ -81,8 +95,12 @@ function DialogCanvas() {
             >
               Cancel
             </Button>
-            <Button type="button" disabled={!valid} onClick={onCreate}>
-              Create
+            <Button
+              type="button"
+              disabled={!valid || loading}
+              onClick={handleCreate}
+            >
+              {loading ? "Creating..." : "Create"}
             </Button>
           </div>
         </div>

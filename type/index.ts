@@ -31,6 +31,7 @@ export type ButtonElement = BaseElement & {
 export type CanvasElement = TextElement | ImageElement | ButtonElement;
 
 export type Screen = {
+  id: string;
   width: number;
   height: number;
   elements: CanvasElement[];

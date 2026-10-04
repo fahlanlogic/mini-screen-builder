@@ -6,7 +6,7 @@ type EditorState = {
   screen: Screen | null;
   selectedId: string | null;
 
-  createScreen: (width: number, height: number) => void;
+  createScreen: (screen: Screen) => void;
   resetScreen: () => void;
 
   addElement: (el: CanvasElement) => void;
@@ -30,8 +30,7 @@ export const useEditor = create<EditorState>()(
       screen: null,
       selectedId: null,
 
-      createScreen: (width, height) =>
-        set({ screen: { width, height, elements: [] }, selectedId: null }),
+      createScreen: (screen: Screen) => set({ screen, selectedId: null }),
 
       resetScreen: () => set({ screen: null, selectedId: null }),
 
