@@ -24,6 +24,9 @@ export function createElement(type: CanvasElement["type"]): CanvasElement {
         height: 80,
         label: "Button",
         actionId: "",
+        backgroundColor: "#000000",
+        color: "#ffffff",
+        fontSize: 32,
       };
   }
 }

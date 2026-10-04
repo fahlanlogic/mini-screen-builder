@@ -75,6 +75,11 @@ function CanvasItem({ el, scale }: { el: CanvasElement; scale: number }) {
           onKeyDown={(e) => {
             if (e.key === "Escape" || e.key === "Enter") e.currentTarget.blur();
           }}
+          style={{
+            backgroundColor: el.backgroundColor,
+            color: el.color,
+            fontSize: el.fontSize,
+          }}
           className="h-full w-full rounded-md bg-primary text-center text-primary-foreground outline-none"
         />
       )}

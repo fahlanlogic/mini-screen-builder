@@ -32,7 +32,14 @@ function ElementView({ el }: { el: CanvasElement }) {
     case "button":
       return (
         <button
-          style={{ width: "100%", height: "100%", pointerEvents: "none" }}
+          style={{
+            width: "100%",
+            height: "100%",
+            pointerEvents: "none",
+            backgroundColor: el.backgroundColor,
+            color: el.color,
+            fontSize: el.fontSize,
+          }}
           className="rounded-md bg-primary text-primary-foreground"
         >
           {el.label}

@@ -23,6 +23,9 @@ export type ButtonElement = BaseElement & {
   type: "button";
   label: string;
   actionId: string;
+  backgroundColor: string;
+  color: string;
+  fontSize: number;
 };
 
 export type CanvasElement = TextElement | ImageElement | ButtonElement;

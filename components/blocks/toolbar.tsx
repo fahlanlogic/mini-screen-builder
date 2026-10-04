@@ -16,7 +16,10 @@ function Toolbar() {
   });
 
   return (
-    <nav className="bg-primary absolute rounded-full px-2 py-1 top-2 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2">
+    <nav
+      data-keep-selection
+      className="bg-primary absolute rounded-full px-2 py-1 top-2 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2"
+    >
       <Button
         size="icon"
         className="hover:text-primary-foreground/50"
